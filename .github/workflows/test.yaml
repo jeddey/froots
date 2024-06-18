@@ -48,7 +48,7 @@ jobs:
       - name: Run linter
         run: |
           docker-compose exec -T php-fpm ls -la
-          docker-compose exec -T php-fpm ls -la ./vendor/bin
+          docker-compose exec -T php-fpm ls -la vendor/bin
           docker-compose exec -T php-fpm composer cs-fix
 
   code-phpstan:
