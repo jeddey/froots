@@ -45,8 +45,8 @@ jobs:
         uses: php-actions/composer@v2
 
       - name: Run linter
-        run: |
-          docker-compose exec -T php-fpm composer cs-fix
+        uses: php-actions/composer@v2
+          command: cs-fix;
 
   code-phpstan:
     runs-on: ubuntu-latest
