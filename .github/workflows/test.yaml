@@ -43,7 +43,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          docker-compose exec -T php-fprm chown -R "$(id -u):$(id -g) *"
           MY_UID="$(id -u)" MY_GID="$(id -g)" docker-compose exec -it php-fpm composer install
 
       - name: Run linter
