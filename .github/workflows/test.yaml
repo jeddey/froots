@@ -46,7 +46,7 @@ jobs:
 
       - name: Run linter
         run: |
-          docker-compose exec -T php-fpm bin/sh -c "chown -R $(id -u):$(id -g) ./"
+          docker-compose exec -T php-fpm /bin/sh -c "chown -R $(id -u):$(id -g) ./"
           docker-compose exec -T php-fpm composer ls -la
           docker-compose exec -T php-fpm composer cs-fix
 
