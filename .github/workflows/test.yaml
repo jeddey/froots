@@ -46,8 +46,8 @@ jobs:
 
       - name: Run linter
         run: |
-        docker-compose exec -T php-fpm ls -la
-        docker-compose exec -T php-fpm pwd
+          docker-compose exec -T php-fpm ls -la
+          docker-compose exec -T php-fpm pwd
 
   code-phpstan:
     runs-on: ubuntu-latest
