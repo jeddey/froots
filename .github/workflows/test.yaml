@@ -93,12 +93,12 @@ jobs:
         uses: php-actions/composer@v6
 
       - name: Run the build process with Docker
-          uses: addnab/docker-run-action@v3
-          with:
-            image: aschmelyun/cleaver:latest
-            run: |
-              composer install
-              composer phpunit
+        uses: addnab/docker-run-action@v3
+        with:
+          image: aschmelyun/cleaver:latest
+          run: |
+            composer install
+            composer phpunit
 #  test:
 #    needs: install-dependencies
 #    runs-on: ubuntu-latest
