@@ -1,0 +1,20 @@
+api_platform:
+    version: 1.0.0
+    mapping:
+        paths: ['%kernel.project_dir%/src/Entity']
+    patch_formats:
+        json: ['application/merge-patch+json']
+        jsonld: [ 'application/ld+json' ]
+    formats:
+        jsonld: [ 'application/ld+json' ]
+        json: [ 'application/json' ]
+        html: [ 'text/html' ]
+    swagger:
+        versions: [3]
+        api_keys:
+            JWT:
+                name: Authorization
+                type: header
+    defaults:
+        cache_headers:
+            vary: [ 'Content-Type', 'Authorization', 'Origin' ]
