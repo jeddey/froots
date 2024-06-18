@@ -43,8 +43,8 @@ jobs:
 
       - name: Install dependencies
         uses: php-actions/composer@v6
-          with:
-            command: composer install
+        with:
+          command: composer install
 
       - name: Run linter
         run: |
