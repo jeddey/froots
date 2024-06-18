@@ -34,7 +34,7 @@ jobs:
         run: docker-compose up -d
 
       - name: Install dependencies
-        run: docker-compose exec php-fpm composer install
+        run: docker-compose exec it php-fpm composer install
 
   test:
     needs: install-dependencies
@@ -47,7 +47,7 @@ jobs:
         run: docker-compose up -d
 
       - name: Run tests
-        run: docker-compose exec php-fpm bin/phpunit
+        run: docker-compose exec -it php-fpm bin/phpunit
 
   lint:
     needs: install-dependencies
@@ -60,7 +60,7 @@ jobs:
         run: docker-compose up -d
 
       - name: Run linter
-        run: docker-compose exec php-fpm composer cs-fix
+        run: docker-compose exec -it php-fpm composer cs-fix
 
   build:
     needs: install-dependencies
@@ -73,7 +73,7 @@ jobs:
         run: docker-compose up -d
 
       - name: Build project
-        run: docker-compose exec php-fpm php bin/console cache:warmup
+        run: docker-compose exec -it php-fpm php bin/console cache:warmup
 
 
 
