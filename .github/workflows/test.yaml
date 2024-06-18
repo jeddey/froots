@@ -92,8 +92,13 @@ jobs:
       - name: Install dependencies
         uses: php-actions/composer@v6
 
-      - name: Run linter
-        uses: php-actions/phpunit@v3
+      - name: Run the build process with Docker
+          uses: addnab/docker-run-action@v3
+          with:
+            image: aschmelyun/cleaver:latest
+            run: |
+              composer install
+              composer phpunit
 #  test:
 #    needs: install-dependencies
 #    runs-on: ubuntu-latest
