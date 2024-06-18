@@ -90,16 +90,11 @@ jobs:
         run: docker-compose up -d
 
       - name: Install dependencies
-        uses: php-actions/composer@v6
+        run: docker-compose exec -it php-fpm composer install
 
-      - name: Run the build process with Docker
-        uses: addnab/docker-run-action@v3
-        with:
-          image: aschmelyun/cleaver:latest
-          options: -v ${{ github.workspace }}:/var/www/html
-          run: |
-            composer install
-            composer phpunit
+      - name: Run linter
+        run: docker-compose exec -it php-fpm composer phpunit
+
 #  test:
 #    needs: install-dependencies
 #    runs-on: ubuntu-latest
