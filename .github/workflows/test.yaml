@@ -42,7 +42,9 @@ jobs:
         run: docker-compose up -d
 
       - name: Install dependencies
-        run: docker-compose exec -it php-fpm sh -c "composer install"
+        uses: php-actions/composer@v6
+          with:
+            command: composer install
 
       - name: Run linter
         run: |
