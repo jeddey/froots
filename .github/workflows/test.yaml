@@ -67,7 +67,7 @@ jobs:
         run: docker-compose exec -it php-fpm composer install
 
       - name: Run linter
-        run: docker-compose exec -it php-fpm composer phpstan
+        run: docker-compose exec -T php-fpm composer phpstan
 
   code-unit-tests:
     runs-on: ubuntu-latest
@@ -89,7 +89,7 @@ jobs:
         run: docker-compose exec -it php-fpm composer install
 
       - name: Run linter
-        run: docker-compose exec -it php-fpm composer phpunit
+        run: docker-compose exec -T php-fpm composer phpunit
 
 #  test:
 #    needs: install-dependencies
