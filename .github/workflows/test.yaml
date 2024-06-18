@@ -93,7 +93,7 @@ jobs:
         uses: php-actions/composer@v6
 
       - name: Run linter
-        uses: php-actions/phpunit@v9
+        uses: php-actions/phpunit@v3
 #  test:
 #    needs: install-dependencies
 #    runs-on: ubuntu-latest
