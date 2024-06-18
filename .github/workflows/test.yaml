@@ -42,12 +42,12 @@ jobs:
         run: docker-compose up -d
 
       - name: Install dependencies
-        uses: php-actions/composer@v2
+        uses: php-actions/composer@v6
 
       - name: Run linter
-        uses: php-actions/composer@v2
+        uses: php-actions/composer@v6
         with:
-          command: cs-fix;
+          command: phpstan;
 
   code-phpstan:
     runs-on: ubuntu-latest
