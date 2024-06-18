@@ -45,7 +45,7 @@ jobs:
         run: docker-compose exec -it php-fpm composer install
 
       - name: Run linter
-        run: docker-compose exec -it --no-TTY php-fpm composer cs-fix
+        run: docker-compose exec --no-TTY php-fpm composer cs-fix
 
   code-phpstan:
     runs-on: ubuntu-latest
