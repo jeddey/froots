@@ -46,6 +46,7 @@ jobs:
 
       - name: Run linter
         uses: php-actions/composer@v2
+        with:
           command: cs-fix;
 
   code-phpstan:
