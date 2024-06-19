@@ -1,5 +1,12 @@
 version: "3.5"
 
+networks:
+  froots:
+    external: true
+    driver: bridge
+    name: froots
+
+
 services:
   nginx:
     image: nginx:latest
@@ -45,14 +52,8 @@ services:
       - '3306'
     volumes:
       - mysql_data:/var/lib/mysql
-#    networks:
-#      - froots
-
-networks:
-  froots:
-    external: true
-    driver: bridge
-    name: froots
+    networks:
+      - froots
 
 volumes:
   mysql_data:
