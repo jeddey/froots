@@ -2,7 +2,7 @@ version: "3.5"
 
 networks:
   froots:
-    external: true
+#    external: true
     driver: bridge
     name: froots
 
