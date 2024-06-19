@@ -22,7 +22,7 @@ services:
       - froots
 
   php-fpm:
-    image: 339713191041.dkr.ecr.eu-north-1.amazonaws.com/seifeddine.jeddey:php
+    image: 339713191041.dkr.ecr.eu-north-1.amazonaws.com/php:latest
 #    user: ${MY_UID}:${MY_GID}
     container_name: froots.php
     environment:
