@@ -11,6 +11,8 @@ services:
       - ./docker/nginx/conf.d:/etc/nginx/conf.d
     depends_on:
       - php-fpm
+    networks:
+      - froots
 
   php-fpm:
     build: ./
@@ -25,6 +27,8 @@ services:
     working_dir: /var/www/html
     depends_on:
       - mysql
+    networks:
+      - froots
 
 
   mysql:
@@ -41,6 +45,8 @@ services:
       - '3306'
     volumes:
       - mysql_data:/var/lib/mysql
+    networks:
+      - froots
 
 networks:
   default:
