@@ -44,6 +44,6 @@ jobs:
           ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
           IMAGE_TAG: ${{ steps.get-commit-hash.outputs.commit-hash }}-${{ steps.get-timestamp.outputs.timestamp }}
         run: |
-          docker build -t 339713191041.dkr.ecr.eu-north-1.amazonaws.com/php .
-          docker push 339713191041.dkr.ecr.eu-north-1.amazonaws.com/php
+          docker build -t $ECR_REGISTRY/php .
+          docker push $ECR_REGISTRY/php
 
