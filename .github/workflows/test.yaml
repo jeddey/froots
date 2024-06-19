@@ -89,8 +89,10 @@ jobs:
       - name: Run Docker Compose
         run: docker-compose up -d
 
+#      - name: Install dependencies
+#        run: docker-compose exec -T php-fpm composer install
       - name: Install dependencies
-        run: docker-compose exec -T php-fpm composer install
+          uses: php-actions/composer@v6
 
       - name: Run linter
         run: docker-compose exec -T php-fpm composer phpunit
