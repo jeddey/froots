@@ -92,7 +92,7 @@ jobs:
 #      - name: Install dependencies
 #        run: docker-compose exec -T php-fpm composer install
       - name: Install dependencies
-          uses: php-actions/composer@v6
+        uses: php-actions/composer@v6
 
       - name: Run linter
         run: docker-compose exec -T php-fpm composer phpunit
