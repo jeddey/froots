@@ -45,11 +45,12 @@ services:
       - '3306'
     volumes:
       - mysql_data:/var/lib/mysql
-    networks:
-      - froots
+#    networks:
+#      - froots
 
 networks:
-  default:
+  froots:
+    external: true
     driver: bridge
     name: froots
 
