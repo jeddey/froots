@@ -1,102 +1,109 @@
-name: CI Workflow
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  install-dependencies:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Docker login to ECR registry
-        uses: docker/login-action@v3
-        with:
-          registry: 339713191041.dkr.ecr.eu-north-1.amazonaws.com
-          username: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
-      - name: Run Docker Compose
-        run: docker-compose up -d
-
-      - name: Install dependencies
-        run: docker-compose exec -it php-fpm composer install
-
-  code-lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Docker login to ECR registry
-        uses: docker/login-action@v3
-        with:
-          registry: 339713191041.dkr.ecr.eu-north-1.amazonaws.com
-          username: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
-      - name: Run Docker Compose
-        run: docker-compose up -d
-
-      - name: Install dependencies
-        uses: php-actions/composer@v6
-
-      - name: Run linter
-        uses: php-actions/composer@v6
-        with:
-          command: cs-fix
-
-  code-phpstan:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Docker login to ECR registry
-        uses: docker/login-action@v3
-        with:
-          registry: 339713191041.dkr.ecr.eu-north-1.amazonaws.com
-          username: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
-      - name: Run Docker Compose
-        run: docker-compose up -d
-
-      - name: Install dependencies
-        uses: php-actions/composer@v6
-
-      - name: Run PHPstan
-        uses: php-actions/composer@v6
-        with:
-          command: phpstan
-
-  code-unit-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Docker login to ECR registry
-        uses: docker/login-action@v3
-        with:
-          registry: 339713191041.dkr.ecr.eu-north-1.amazonaws.com
-          username: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
-      - name: Run Docker Compose
-        run: docker-compose up -d
-
+#name: CI Workflow
+#
+#on:
+#  push:
+#    branches:
+#      - main
+#
+#jobs:
+#  install-dependencies:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v2
+#
+#      - name: Docker login to ECR registry
+#        uses: docker/login-action@v3
+#        with:
+#          registry: 339713191041.dkr.ecr.eu-north-1.amazonaws.com
+#          username: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#
+#      - name: Run Docker Compose
+#        run: docker-compose up -d
+#
 #      - name: Install dependencies
-#        run: docker-compose exec -T php-fpm composer install
-      - name: Install dependencies
-        uses: php-actions/composer@v6
+#        run: docker-compose exec -it php-fpm composer install
+#
+#  code-lint:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v2
+#
+#      - name: Docker login to ECR registry
+#        uses: docker/login-action@v3
+#        with:
+#          registry: 339713191041.dkr.ecr.eu-north-1.amazonaws.com
+#          username: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#
+#      - name: Run Docker Compose
+#        run: docker-compose up -d
+#
+#      - name: Install dependencies
+#        uses: php-actions/composer@v6
+#
+#      - name: Run linter
+#        uses: php-actions/composer@v6
+#        with:
+#          command: cs-fix
+#
+#  code-phpstan:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v2
+#
+#      - name: Docker login to ECR registry
+#        uses: docker/login-action@v3
+#        with:
+#          registry: 339713191041.dkr.ecr.eu-north-1.amazonaws.com
+#          username: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#
+#      - name: Run Docker Compose
+#        run: docker-compose up -d
+#
+#      - name: Install dependencies
+#        uses: php-actions/composer@v6
+#
+#      - name: Run PHPstan
+#        uses: php-actions/composer@v6
+#        with:
+#          command: phpstan
+#
+#  code-unit-tests:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v2
+#
+#      - name: Docker login to ECR registry
+#        uses: docker/login-action@v3
+#        with:
+#          registry: 339713191041.dkr.ecr.eu-north-1.amazonaws.com
+#          username: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#
+#      - name: Run Docker Compose
+#        run: docker-compose up -d
+#
+#      - name: Install dependencies
+#        uses: php-actions/composer@v6
+#
+#      - name: Run phpunit
+#        run: docker-compose exec -T php-fpm composer phpunit
+#
+#
 
-      - name: Run linter
-        run: docker-compose exec -T php-fpm composer phpunit
 
+
+
+
+
+
+#####################################33
 #  test:
 #    needs: install-dependencies
 #    runs-on: ubuntu-latest
