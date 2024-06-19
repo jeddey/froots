@@ -1,10 +1,14 @@
 name: Deploy
 
 on:
-  workflow_run:
-    workflows: ["Push the Docker image to AWS ECR Repo"]
-    types:
-      - completed
+  push:
+    branches:
+      - main
+#on:
+#  workflow_run:
+#    workflows: ["Push the Docker image to AWS ECR Repo"]
+#    types:
+#      - completed
 
 jobs:
   deploy-ecs:
