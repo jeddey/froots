@@ -82,12 +82,8 @@
       "php bin/phpunit "
     ],
     "migrate": "yes | bin/console d:m:migrate",
-    "post-install-cmd": [
-      "@auto-scripts"
-    ],
-    "post-update-cmd": [
-      "@auto-scripts"
-    ]
+    "post-install-cmd": {},
+    "post-update-cmd": {}
   },
   "conflict": {
     "symfony/symfony": "*"
