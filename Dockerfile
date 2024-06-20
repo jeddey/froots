@@ -45,11 +45,11 @@ RUN docker-php-ext-configure zip
 COPY . /var/www/html
 WORKDIR /var/www/html
 
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 COPY composer.json composer.lock ./
-
-ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN set -eux; \
 	composer install --prefer-dist --no-dev --no-scripts --no-progress; \
