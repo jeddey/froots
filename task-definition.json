@@ -2,7 +2,7 @@
   "taskDefinitionArn": "arn:aws:ecs:eu-north-1:339713191041:task-definition/task-definition:1",
   "containerDefinitions": [
     {
-      "name": "ecs-service-connect-CQ9lU8u",
+      "name": "app",
       "image": "339713191041.dkr.ecr.eu-north-1.amazonaws.com/php:latest",
       "cpu": 0,
       "portMappings": [
