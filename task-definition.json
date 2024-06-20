@@ -84,26 +84,6 @@
       "workingDirectory": "/var/www/html"
     }
   ],
-  "volumes": [
-    {
-      "host": {
-        "sourcePath": "./"
-      },
-      "name": "_"
-    },
-    {
-      "host": {
-        "sourcePath": "./docker/nginx/conf.d"
-      },
-      "name": "_DockerNginxConf_D"
-    },
-    {
-      "host": {
-        "sourcePath": "mysql_data"
-      },
-      "name": "Mysql_Data"
-    }
-  ],
   "family": "task-definition",
   "executionRoleArn": "arn:aws:iam::339713191041:role/ecsTaskExecutionRole",
   "networkMode": "awsvpc",
@@ -137,7 +117,8 @@
   ],
   "placementConstraints": [],
   "compatibilities": [
-    "EC2"
+    "EC2",
+    "FARGATE"
   ],
   "requiresCompatibilities": [
     "FARGATE"
