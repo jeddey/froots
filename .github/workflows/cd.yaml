@@ -34,7 +34,7 @@ jobs:
         # Where EC2 instance is
         aws-region: eu-north-1
         # AWS EC2 Instance id or ids
-        instance-ids: "i-0d65a546495560c08"
+        instance-ids: i-0d65a546495560c08
         # Command execution location
         # !!! The line below may vary depending on where your docker-compose file is located.
         working-directory: /var/www/html
