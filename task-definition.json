@@ -31,6 +31,7 @@
         "secretOptions": []
       },
       "systemControls": []
+    },
     {
       "name": "mysql",
       "image": "mysql:5.7",
