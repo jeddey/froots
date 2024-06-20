@@ -23,27 +23,27 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-      steps:
-      - name: AWS SSM Send-Command
-        uses: peterkimzz/aws-ssm-send-command@v1.1.1
-        with:
-          # AWS access key id
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          # AWS secret access key
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          # Where EC2 instance is
-          aws-region: eu-north-1
-          # AWS EC2 Instance id or ids
-          instance-ids: i-0d65a546495560c08
-          # Command execution location
-          # !!! The line below may vary depending on where your docker-compose file is located.
-          working-directory: /var/www/html
-          # Bash commands you want to execute
-          command: |
-            sudo docker-compose stop
-            sudo docker-compose rm -f
-            sudo docker-compose pull
-            sudo docker-compose up -d
-            sudo docker image prune -af
-          # Comment for Send-Command
-          comment: docker-compose.yml file re-pulls newer versions of book-portal images and runs them on the instance.
+    steps:
+    - name: AWS SSM Send-Command
+      uses: peterkimzz/aws-ssm-send-command@v1.1.1
+      with:
+        # AWS access key id
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        # AWS secret access key
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        # Where EC2 instance is
+        aws-region: eu-north-1
+        # AWS EC2 Instance id or ids
+        instance-ids: i-0d65a546495560c08
+        # Command execution location
+        # !!! The line below may vary depending on where your docker-compose file is located.
+        working-directory: /var/www/html
+        # Bash commands you want to execute
+        command: |
+          sudo docker-compose stop
+          sudo docker-compose rm -f
+          sudo docker-compose pull
+          sudo docker-compose up -d
+          sudo docker image prune -af
+        # Comment for Send-Command
+        comment: docker-compose.yml file re-pulls newer versions of book-portal images and runs them on the instance.
