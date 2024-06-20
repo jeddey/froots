@@ -68,6 +68,7 @@
     "symfony/polyfill-php72": "*"
   },
   "scripts": {
+    "cache:clear": "php bin/console cache:clear",
     "fixtures": [
       "yes | php bin/console doctrine:fixtures:load --purge-with-truncate --purger=mysql_purger"
     ],
