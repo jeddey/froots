@@ -32,7 +32,7 @@ jobs:
         # AWS secret access key
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         # Where EC2 instance is
-        aws-region: eu-north-1b
+        aws-region: us-east-1
         # AWS EC2 Instance id or ids
         instance-ids: ${{ secrets.AWS_INSTANCE_ID }}
         # Command execution location
