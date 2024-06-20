@@ -47,3 +47,4 @@ jobs:
           sudo docker image prune -af
         # Comment for Send-Command
         comment: docker-compose.yml file re-pulls newer versions of book-portal images and runs them on the instance.
+
