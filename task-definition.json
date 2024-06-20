@@ -84,7 +84,7 @@
           "sourceVolume": "_"
         }
       ],
-      "name": "php-fpm",
+      "name": "app",
       "workingDirectory": "/var/www/html"
     }
   ],
