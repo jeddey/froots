@@ -1,4 +1,5 @@
 {
+  "taskDefinitionArn": "arn:aws:ecs:eu-north-1:339713191041:task-definition/task-definition:1",
   "containerDefinitions": [
     {
       "environment": [
@@ -87,7 +88,6 @@
       "workingDirectory": "/var/www/html"
     }
   ],
-  "family": "",
   "volumes": [
     {
       "host": {
@@ -107,5 +107,56 @@
       },
       "name": "Mysql_Data"
     }
-  ]
+  ],
+  "family": "task-definition",
+  "executionRoleArn": "arn:aws:iam::339713191041:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "revision": 1,
+  "status": "ACTIVE",
+  "requiresAttributes": [
+    {
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+    },
+    {
+      "name": "ecs.capability.execution-role-awslogs"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "name": "ecs.capability.execution-role-ecr-pull"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+    },
+    {
+      "name": "ecs.capability.task-eni"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+    }
+  ],
+  "placementConstraints": [],
+  "compatibilities": [
+    "EC2",
+    "FARGATE"
+  ],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "1024",
+  "memory": "3072",
+  "runtimePlatform": {
+    "cpuArchitecture": "X86_64",
+    "operatingSystemFamily": "LINUX"
+  },
+  "registeredAt": "2024-06-20T00:49:46.758Z",
+  "registeredBy": "arn:aws:iam::339713191041:root",
+  "tags": []
 }
+
+
+
