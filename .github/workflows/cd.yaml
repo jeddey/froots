@@ -36,7 +36,7 @@ jobs:
       - name: check docker compose new version
         run: docker compose version
       - name: Create ECS docker context
-        run: sudo docker context create ecs ecscontext --from-env
+        run: sudo docker context create ecs ecscontext
 #  deploy:
 #    name: Deploy
 #    runs-on: ubuntu-latest
