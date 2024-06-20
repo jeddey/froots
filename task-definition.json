@@ -2,7 +2,7 @@
   "taskDefinitionArn": "arn:aws:ecs:eu-north-1:339713191041:task-definition/task-definition:1",
   "containerDefinitions": [
     {
-      "name": "app",
+      "name": "php-fpm",
       "image": "339713191041.dkr.ecr.eu-north-1.amazonaws.com/php:latest",
       "cpu": 0,
       "portMappings": [
@@ -31,6 +31,34 @@
         "secretOptions": []
       },
       "systemControls": []
+    {
+      "name": "mysql",
+      "image": "mysql:5.7",
+      "essential": true,
+      "environment": [
+        {
+          "name": "MYSQL_ROOT_PASSWORD",
+          "value": "!ChangeMe!"
+        },
+        {
+          "name": "MYSQL_DATABASE",
+          "value": "app"
+        },
+        {
+          "name": "MYSQL_USER",
+          "value": "app"
+        },
+        {
+          "name": "MYSQL_PASSWORD",
+          "value": "!ChangeMe!"
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "mysql_data",
+          "containerPath": "/var/lib/mysql"
+        }
+      ]
     }
   ],
   "family": "task-definition",
