@@ -50,8 +50,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY composer.json composer.lock ./
 
 RUN set -eux; \
-	composer install --prefer-dist --no-dev --no-scripts --no-progress; \
-	composer clear-cache
+	composer install --prefer-dist --no-dev --no-scripts --no-progress;
 
 COPY docker/php8/local-entrypoint.sh /usr/local/bin/local-entrypoint
 RUN chmod +x /usr/local/bin/local-entrypoint
