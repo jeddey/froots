@@ -25,6 +25,7 @@ services:
     image: 339713191041.dkr.ecr.eu-north-1.amazonaws.com/php:latest
 #    user: ${MY_UID}:${MY_GID}
     container_name: froots.php
+    dns: 8.8.8.8
     environment:
       - PHP_FPM_ENABLE=1
       - PHP_FPM_SERVER_ADDR=php
