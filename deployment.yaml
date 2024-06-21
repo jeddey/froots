@@ -1,0 +1,73 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: null
+    version: latest
+  name: null
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: null
+      version: latest
+  template:
+    metadata:
+      labels:
+        app: null
+        version: latest
+    spec:
+      containers:
+        - env:
+            - name: MYSQL_DATABASE
+              value: ${MYSQL_DATABASE}
+            - name: MYSQL_USER
+              value: ${MYSQL_USER}
+            - name: MYSQL_PASSWORD
+              value: ${MYSQL_PASSWORD}
+            - name: MYSQL_ROOT_PASSWORD
+              value: ${MYSQL_ROOT_PASSWORD}
+          image: mysql:5.7
+          name: mysql
+          ports:
+            - containerPort: 3306
+              hostPort: 3307
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql_data
+        - image: nginx:latest
+          name: nginx
+          ports:
+            - containerPort: 80
+              hostPort: 80
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/www/html
+              name: .
+            - mountPath: /etc/nginx/conf.d
+              name: .-docker-nginx-conf.d
+        - env:
+            - name: PHP_FPM_ENABLE
+              value: '1'
+            - name: PHP_FPM_SERVER_ADDR
+              value: php
+            - name: PHP_FPM_SERVER_PORT
+              value: '9000'
+          image: 339713191041.dkr.ecr.eu-north-1.amazonaws.com/php:latest
+          name: php-fpm
+          volumeMounts:
+            - mountPath: /var/www/html
+              name: .
+          workingDir: /var/www/html
+      volumes:
+        - hostPath:
+            path: ./
+          name: .
+        - hostPath:
+            path: ./docker/nginx/conf.d
+          name: .-docker-nginx-conf.d
+        - hostPath:
+            path: mysql_data
+          name: mysql_data
