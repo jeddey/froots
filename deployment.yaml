@@ -71,3 +71,4 @@ spec:
         - hostPath:
             path: mysql_data
           name: mysql_data
+
