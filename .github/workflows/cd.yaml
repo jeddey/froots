@@ -63,9 +63,9 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-      script: |
-        whoami
-        ls -al
+          script: |
+            whoami
+            ls -al
 
 #      - name: Fill in the new image ID in the Amazon ECS task definition
 #        id: task-def
