@@ -60,3 +60,6 @@ RUN chmod +x /usr/local/bin/local-entrypoint
 ENTRYPOINT ["local-entrypoint"]
 CMD ["php-fpm"]
 
+FROM nginx as nginx
+FROM mysql as mysql
+
