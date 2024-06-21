@@ -56,16 +56,26 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
-      - name: ssh key passphrase
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
+          password: ${{ secrets.PASSWORD }}
           script: |
-            whoami
-            ls -al
+            docker pull 339713191041.dkr.ecr.eu-north-1.amazonaws.com/php:latest
+            cd php
+            docker-compose up -d --build
+#      - name: ssh key passphrase
+#        uses: appleboy/ssh-action@v1.0.3
+#        with:
+#          host: ${{ secrets.HOST }}
+#          username: ${{ secrets.USERNAME }}
+#          key: ${{ secrets.KEY }}
+#          port: ${{ secrets.PORT }}
+#          script: |
+#            whoami
+#            ls -al
 
 #      - name: Fill in the new image ID in the Amazon ECS task definition
 #        id: task-def
