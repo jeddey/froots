@@ -64,7 +64,8 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            $(aws ecr get-login-password --region eu-north-1) | docker pull 339713191041.dkr.ecr.eu-north-1.amazonaws.com/php:latest
+            aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 339713191041.dkr.ecr.eu-north-1.amazonaws.com/php
+            docker pull 339713191041.dkr.ecr.eu-north-1.amazonaws.com/php:latest
             cd php
             docker-compose up -d --build
 
